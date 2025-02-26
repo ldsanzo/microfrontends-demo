@@ -1,0 +1,33 @@
+
+---
+version: '3.8'
+
+services:
+  aggregator:
+    image: nginx:1.27.1-bookworm
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./aggregator/dist/aggregator/browser:/www/data
+  catalog:
+    image: nginx:1.27.1-bookworm
+    ports:
+      - "8081:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./catalog/dist/catalog/browser:/www/data
+  product:
+    image: nginx:1.27.1-bookworm
+    ports:
+      - "8082:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./product/build:/www/data
+  purchase:
+    image: nginx:1.27.1-bookworm
+    ports:
+      - "8083:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./purchase:/www/data
