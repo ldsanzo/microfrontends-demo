@@ -12,7 +12,9 @@ export class Microfrontend implements OnInit {
 
     @Input() id: string = '';
     @Input() additionalData: any = {};
+
     innerHTML: string = '';
+
     ngOnInit(): void {
         let config: MicrofrontendConfig = environment.microfrontends[this.id as keyof typeof environment.microfrontends];
         let html = `<${config.tag} `
